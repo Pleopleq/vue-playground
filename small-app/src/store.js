@@ -1,33 +1,27 @@
-import { createStore } from "vuex"
+import { createStore } from "vuex";
 
 const store = createStore({
     state() {
         return {
-            brawlerList: []
-        }
+            brawlerList: [],
+        };
     },
 
     mutations: {
-        fetchBrawlers() {
-            const API_KEY = import.meta.env.VITE_API_KEY;
-
-            fetch('https://api.brawlstars.com/v1/brawlers', {
-                method: "GET",
-                headers: {
-                    Accept: 'application/json',
-                    Authorization: 'Bearer ' + API_KEY,
-                }
-            })
-                .then(response => response.json())
-                .then(data => console.log(data));
-        }
+        setBrawlers(state, brawlers) {
+            state.brawlerList = brawlers;
+        },
     },
 
     actions: {
-        fetchBrawlers(context) {
-            context.commit("fetchBrawlers")
-        }
-    }
-})
+        fetchBrawlers({ commit, dispatch }) {
+            fetch("http://localhost:4000/brawlers")
+                .then((response) => response.json())
+                .then((data) => {
+                    commit("setBrawlers", data);
+                });
+        },
+    },
+});
 
-export default store
+export default store;

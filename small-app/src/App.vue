@@ -1,13 +1,13 @@
 <script>
 export default {
   methods: {
-    foobar() {
+    getBrawlers() {
       this.$store.dispatch("fetchBrawlers");
     },
   },
 
   created() {
-    this.foobar();
+    this.getBrawlers();
   },
 };
 </script>

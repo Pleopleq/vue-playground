@@ -1,8 +1,11 @@
 const express = require("express")
+var cors = require('cors')
 require('dotenv').config()
 const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
 
 const app = express()
+
+app.use(cors())
 
 app.get("/brawlers", (req, res) => {
     fetch('https://api.brawlstars.com/v1/brawlers', {
