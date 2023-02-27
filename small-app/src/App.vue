@@ -1,15 +1,5 @@
 <script>
-export default {
-  methods: {
-    getBrawlers() {
-      this.$store.dispatch("fetchBrawlers");
-    },
-  },
-
-  created() {
-    this.getBrawlers();
-  },
-};
+export default {};
 </script>
 
 <template>

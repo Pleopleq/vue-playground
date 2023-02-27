@@ -1,9 +1,17 @@
 <template>
-  <h1>Brawler item list</h1>
+  <div>
+    <router-link :to="`/brawler/${id}`"
+      ><h2>{{ name }}</h2>
+    </router-link>
+  </div>
 </template>
 
 <script>
-export default {};
+export default {
+  name: "BrawlerItemList",
+
+  props: ["name", "id"],
+};
 </script>
 
 <style></style>
