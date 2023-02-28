@@ -4,6 +4,7 @@ const store = createStore({
     state() {
         return {
             brawlerList: [],
+            brawler: {}
         };
     },
 
@@ -11,6 +12,10 @@ const store = createStore({
         setBrawlers(state, brawlers) {
             state.brawlerList = brawlers;
         },
+
+        setSingleBrawler(state, brawler) {
+            state.brawler = brawler
+        }
     },
 
     actions: {
@@ -20,6 +25,17 @@ const store = createStore({
                 .then((data) => {
                     commit("setBrawlers", data);
                 });
+        },
+
+        fetchSingleBrawler({ commit, dispatch }, id) {
+            fetch(`http://localhost:4000/brawler/${id}`)
+                .then((response) => response.json())
+                .then((data) => {
+                    commit("setSingleBrawler", data);
+                })
+                .catch((err) => {
+                    console.log(err)
+                })
         },
     },
 });

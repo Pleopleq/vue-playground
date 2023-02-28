@@ -22,6 +22,7 @@ app.get("/brawlers", (req, res) => {
 
 app.get("/brawler/:id", (req, res) => {
     const brawlerId = req.params.id;
+
     fetch(`https://api.brawlstars.com/v1/brawlers/${brawlerId}`, {
         method: "GET",
         headers: {
