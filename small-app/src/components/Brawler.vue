@@ -48,6 +48,10 @@ export default {
   created() {
     this.getBrawler();
   },
+
+  beforeUnmount() {
+    this.$store.commit("resetState");
+  },
 };
 </script>
 

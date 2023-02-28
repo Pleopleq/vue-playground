@@ -15,6 +15,10 @@ const store = createStore({
 
         setSingleBrawler(state, brawler) {
             state.brawler = brawler
+        },
+
+        resetState(state) {
+            state.brawler = {}
         }
     },
 
